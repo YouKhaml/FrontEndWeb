@@ -1,0 +1,70 @@
+<div class="container">
+  <mat-card class="add-admin-form">
+    <mat-card-header class="form-header">
+      <mat-card-title class="title-container">Ajouter Admin</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content [formGroup]="AdminFormGroup">
+      <input type="hidden" formControlName="idEntreprise">
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="nom">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Prénom</mat-label>
+          <input matInput formControlName="prenom">
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Téléphone</mat-label>
+          <input matInput formControlName="telephone">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Login</mat-label>
+          <input matInput formControlName="username">
+        </mat-form-field>
+
+      </div>
+      <div class="form-row">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Mot de Passe</mat-label>
+          <input matInput type="password" formControlName="password">
+          <mat-error *ngIf="AdminFormGroup.get('password')?.hasError('invalidPassword')">
+            Le mot de passe doit contenir au moins 6 caractères, avec une combinaison de chiffres, de lettres et de caractères spéciaux ( !$&#64;%).
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Confirmer le Mot de Passe</mat-label>
+          <input matInput type="password" formControlName="confirmPassword">
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Département</mat-label>
+          <input matInput formControlName="departement">
+        </mat-form-field>
+      </div>
+      <!-- Message d'erreur pour les mots de passe non correspondants -->
+      <div *ngIf="AdminFormGroup.errors?.['mismatch']" class="error-message">
+        <p>Les mots de passe ne correspondent pas</p>
+      </div>
+      <!-- Message d'erreur pour les erreurs du serveur -->
+      <div *ngIf="errorMessage" class="error-message">
+        <p>{{ errorMessage }}</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="footer-actions">
+      <button (click)="saveAdmin()" mat-raised-button color="primary">Enregistrer</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

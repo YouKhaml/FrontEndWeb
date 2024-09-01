@@ -1,0 +1,10 @@
+<h1 mat-dialog-title class="dialog-title">Confirmation de suppression</h1>
+<div mat-dialog-content class="dialog-content">
+  <p>Êtes-vous sûr de vouloir supprimer cet administrateur ?</p>
+  <p>Attention : La suppression de cet administrateur entraînera également la suppression de tous utilisateurs associés.</p>
+</div>
+
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button (click)="onCancel()" class="dialog-actions">Annuler</button>
+  <button mat-button color="warn" (click)="onConfirm()" class="dialog-actions">Supprimer</button>
+</div>

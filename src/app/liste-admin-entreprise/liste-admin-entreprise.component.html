@@ -1,0 +1,110 @@
+<div class="container">
+  <mat-card class="user-list-card">
+    <mat-card-header class="card-header">
+      <mat-card-title class="title-container">
+        Liste Admin ({{ nomEntreprise }})
+      </mat-card-title>
+    </mat-card-header>
+    <mat-divider class="card-divider"></mat-divider>
+    <mat-card-content>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z1" matSort>
+
+
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="nom">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Nom
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+        </ng-container>
+
+        <!-- Prenom Column -->
+        <ng-container matColumnDef="prenom">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Prénom
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.prenom}} </td>
+        </ng-container>
+
+        <!-- Telephone Column -->
+        <ng-container matColumnDef="telephone">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Téléphone
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.telephone}} </td>
+        </ng-container>
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Email
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+        <!-- Département Column -->
+        <ng-container matColumnDef="departement">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Département
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.departement}} </td>
+        </ng-container>
+        <!-- Etat Column -->
+        <ng-container matColumnDef="etat">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            État
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.etat}} </td>
+        </ng-container>
+        <!-- Quota Column -->
+        <ng-container matColumnDef="quota">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Quota
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <button (click)="detailQuotaAdmin(element)" mat-icon-button style="color: #4caf50;" matTooltip="Quota" aria-label="Quota">
+              <mat-icon>add_circle_outline</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Actions
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="action-buttons">
+              <button (click)="detailsAdmin(element)" mat-icon-button color="primary" matTooltip="Afficher">
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button (click)="editAdmin(element.id, element)" mat-icon-button style="color: #EECE17" matTooltip="Modifier">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button (click)="deleteAdmin(element)" mat-icon-button color="warn" matTooltip="Supprimer">
+                <mat-icon>delete</mat-icon>
+              </button>
+              <button *ngIf="!element.quota"
+                      mat-icon-button
+                      (click)="openAddQuotaDialog(element)"
+                      style="color: #4caf50;"
+                      matTooltip="Ajouter Quota"
+                      aria-label="Ajouter Quota">
+                <mat-icon>add</mat-icon>
+              </button>
+
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Header and Row Definitions -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </mat-card-content>
+  </mat-card>
+</div>

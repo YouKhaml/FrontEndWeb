@@ -1,0 +1,53 @@
+<div class="container">
+  <mat-card class="add-user-form">
+    <mat-card-header class="form-header">
+      <mat-card-title class="title-container">Ajouter Entreprise</mat-card-title>
+    </mat-card-header>
+    <mat-horizontal-stepper></mat-horizontal-stepper>
+    <mat-card-content [formGroup]="EntrepriseFormGroup">
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="nom">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Téléphone</mat-label>
+          <input matInput formControlName="telephone">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Adresse</mat-label>
+          <input matInput formControlName="adresse">
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>RC</mat-label>
+          <input matInput formControlName="rc">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>RS</mat-label>
+          <input matInput formControlName="rs">
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>ICF</mat-label>
+          <input matInput formControlName="icf">
+        </mat-form-field>
+        <!--<mat-form-field appearance="outline">
+          <mat-label>Quota</mat-label>
+          <input matInput pattern="[0-9]*" inputmode="numeric" formControlName="quota">
+        </mat-form-field>-->
+      </div>
+    </mat-card-content>
+    <mat-card-footer class="footer-actions">
+      <button (click)="saveEntreprise()" mat-raised-button color="primary">Enregistrer</button>
+    </mat-card-footer>
+  </mat-card>
+</div>

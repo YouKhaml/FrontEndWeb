@@ -1,0 +1,11 @@
+.dialog-title {
+  font-weight: bold;
+}
+
+.dialog-content {
+  margin-bottom: 20px;
+}
+
+.dialog-actions {
+  justify-content: flex-end;
+}

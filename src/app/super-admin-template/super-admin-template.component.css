@@ -1,0 +1,15 @@
+.custom-list-item {
+  background-color: #E6EBF3;
+}
+.custom-toolbar {
+  background-color: black;
+}
+.custom-list-item .mat-list-item-content {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.custom-list-item button {
+  color: black; /* Optionnel : couleur du texte des boutons */
+}

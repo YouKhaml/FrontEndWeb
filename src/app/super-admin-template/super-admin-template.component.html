@@ -1,0 +1,109 @@
+<!--
+<mat-toolbar color="primary">
+
+  <button mat-icon-button (click)="MyDrawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span style="flex:auto"></span>
+  <button mat-button routerLink="home">Home</button>
+  <button mat-button *ngIf="authService.role.includes('SuperAdmin')"  [matMenuTriggerFor]="EntrepriseMenu">
+    <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
+    Entreprises
+  </button>
+  <mat-menu #EntrepriseMenu>
+    <button mat-menu-item routerLink="/superAdmin/addEntreprise">ajouter Entreprise</button>
+    <button mat-menu-item routerLink="/superAdmin/listeEntreprise">liste d'entreprise</button>
+  </mat-menu>
+  <button mat-button *ngIf="authService.role.includes('Admin')"  [matMenuTriggerFor]="AdminMenu">
+    <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
+    Admins
+  </button>
+  <mat-menu #AdminMenu>
+    <button mat-menu-item (click)="addUtilisateur(admin)">Ajouter utilisateur</button>
+    <button mat-menu-item  routerLink="/superAdmin/listeUtilisateur">Liste des utilisateurs </button>
+  </mat-menu>
+  <button mat-button *ngIf="authService.isAuthenticated">
+    {{authService.user}}
+  </button>
+  <button mat-raised-button color="accent" (click)="logout()">LogOut</button>
+</mat-toolbar>
+<mat-drawer-container>
+  <mat-drawer #MyDrawer opened="true" mode="side" position="start">
+    <mat-list>
+     <mat-list-item *ngIf="authService.role.includes('SuperAdmin')">
+       <button mat-button   [matMenuTriggerFor]="EntrepriseMenu">
+         <mat-icon>dashboard</mat-icon>
+         <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
+         Entreprises
+       </button>
+     </mat-list-item>
+      <mat-list-item>
+        <button mat-button *ngIf="authService.role.includes('Admin')"  [matMenuTriggerFor]="AdminMenu">
+          <mat-icon>dashboard</mat-icon>
+          <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
+          Admins
+        </button>
+      </mat-list-item>
+    </mat-list>
+
+  </mat-drawer>
+  <mat-drawer-content>
+    <div style="min-height: 600px">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-drawer-content>
+</mat-drawer-container>
+-->
+
+
+
+<mat-toolbar color="primary">
+
+  <button mat-icon-button  (click)="MyDrawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span style="flex:auto"></span>
+
+  <button mat-button (click)="addUtilisateur(admin)" *ngIf="authService.role==='Admin'" >Ajouter utilisateur</button>
+  <button mat-button  routerLink="/superAdmin/listeUtilisateur" *ngIf="authService.role==='Admin'" >Liste des utilisateurs </button>
+  <button mat-button routerLink="/superAdmin/addEntreprise" *ngIf="authService.role==='SuperAdmin'"  >
+    ajouter Entreprise
+  </button>
+  <button mat-button routerLink="/superAdmin/listeEntreprise" *ngIf="authService.role==='SuperAdmin'"  >
+    liste des entreprise
+  </button>
+  <mat-menu #EntrepriseMenu>
+    <button mat-button routerLink="/superAdmin/addEntreprise">ajouter Entreprise</button>
+    <button mat-button routerLink="/superAdmin/listeEntreprise">liste d'entreprise</button>
+
+  </mat-menu>
+  <button mat-button *ngIf="authService.isAuthenticated">
+    {{authService.user}}
+  </button>
+  <button mat-raised-button color="accent" (click)="logout()">LogOut</button>
+</mat-toolbar>
+<mat-drawer-container >
+  <mat-drawer #MyDrawer opened="true" mode="side" position="start" class="custom-list-item">
+    <mat-list>
+      <mat-list-item *ngIf="authService.role==='SuperAdmin'" >
+        <button mat-button routerLink="/superAdmin/addEntreprise">Ajouter Entreprise</button>
+      </mat-list-item>
+      <mat-list-item *ngIf="authService.role==='SuperAdmin'" >
+        <button mat-button routerLink="/superAdmin/listeEntreprise">Liste d'entreprise</button>
+      </mat-list-item>
+      <mat-list-item *ngIf="authService.role==='Admin'" >
+        <button mat-button (click)="addUtilisateur(admin)">Ajouter Utilisateur</button>
+      </mat-list-item>
+      <mat-list-item *ngIf="authService.role==='Admin'" >
+        <button mat-button routerLink="/superAdmin/listeUtilisateur">Liste des utilisateurs</button>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div style="min-height: 600px">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-drawer-content>
+</mat-drawer-container>

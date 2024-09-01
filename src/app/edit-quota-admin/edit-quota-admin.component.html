@@ -1,0 +1,21 @@
+<h1 mat-dialog-title class="dialog-title">Modifier le quota d'un Administrateur</h1>
+
+<div mat-dialog-content class="dialog-content">
+  <form (ngSubmit)="onSubmit()" [formGroup]="quotaForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Quota (en Go)</mat-label>
+      <input matInput type="number" formControlName="quota" required min="0">
+      <mat-error *ngIf="quotaForm.get('quota')?.hasError('required')">
+        Le quota est requis.
+      </mat-error>
+      <mat-error *ngIf="quotaForm.get('quota')?.hasError('min')">
+        Le quota doit être un nombre positif.
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button (click)="onCancel()" class="dialog-actions">Annuler</button>
+  <button mat-button color="primary" (click)="onSubmit()" class="dialog-actions">Enregistrer</button>
+</div>
